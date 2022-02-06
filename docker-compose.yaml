@@ -46,6 +46,51 @@ x-airflow-common:
       condition: service_healthy
 
 services:
+  mlflow:    
+    build: ./mlflow-server
+    container_name: mlserver-mlflow
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+      - "5002:5002"
+      - "5003:5003"
+      - "5004:5004"
+      - "5005:5005"
+    depends_on:
+      - "ftpd"
+      - "postgresml"
+    volumes: 
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+  ftpd:
+    image: "mauler/simple-ftp-server"
+    container_name: mlserver-ftpd
+    environment:
+      - FTP_USER=test
+      - FTP_PASS=test
+    ports:
+      - "21:21" 
+    volumes: 
+      - ./mlflow-server/artifacts:/ftp-home/home/test/      
+  postgresml:
+    build: ./postgres-mlflow
+    container_name: mlserver-db
+    environment:
+      POSTGRES_USER: 'mlflow_user'
+      POSTGRES_PASSWORD: 'mlflow'
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./postgres-mlflow/db:/var/lib/postgresql/data
+  jupyter:
+    environment:
+      - JUPYTER_ENABLE_LAB=yes  
+    build: ./jupyter-mlflow
+    container_name: mlserver-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./jupyter-mlflow/Experiments:/home/jovyan/work
   postgres:
     image: postgres:13
     environment:

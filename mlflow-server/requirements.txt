@@ -1,0 +1,6 @@
+mlflow
+psycopg2-binary
+sklearn
+cloudpickle
+pickle5
+

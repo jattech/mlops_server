@@ -3,3 +3,5 @@ logs/
 models/
 img/
 plugins/
+mlflow-server/artifacts/
+postgres-mlflow/db/
