@@ -22,7 +22,7 @@ default_args= {
 }
 
 with DAG(
-    "MLOps_Pipeline",
+    "MLOps_Pipeline_Breast",
     description='End-to-end ML pipeline example',
     schedule_interval='@daily',
     default_args=default_args, 

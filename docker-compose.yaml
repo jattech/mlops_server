@@ -85,12 +85,14 @@ services:
   jupyter:
     environment:
       - JUPYTER_ENABLE_LAB=yes  
+      - JUPYTER_TOKEN=iugboioibiEEODJDhdiod839sb9s_sp88
     build: ./jupyter-mlflow
     container_name: mlserver-jupyter
     ports:
       - "8888:8888"
     volumes:
-      - ./jupyter-mlflow/Experiments:/home/jovyan/work
+      - ./jupyter-mlflow/Experiments:/home/jovyan/work/notebooks
+      - ./dags:/home/jovyan/work/dags
   postgres:
     image: postgres:13
     environment:
