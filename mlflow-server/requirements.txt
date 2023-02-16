@@ -1,6 +1,6 @@
 mlflow
 psycopg2-binary
-sklearn
+scikit-learn
 cloudpickle
 pickle5
 
