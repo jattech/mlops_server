@@ -1,2 +1,3 @@
 mlflow
 pysftp
+Elyra >= 2.0.0

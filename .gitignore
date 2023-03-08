@@ -5,3 +5,5 @@ img/
 plugins/
 mlflow-server/artifacts/
 postgres-mlflow/db/
+dags/__pycache__/
+dags/utils/__pycache__/
