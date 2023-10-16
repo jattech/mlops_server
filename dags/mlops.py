@@ -18,6 +18,7 @@ dag = DAG(
     default_args=default_args,
     description='Ejemplo de MLOps con Airflow',
     schedule_interval=timedelta(days=1),
+    catchup=False
 )
 
 
