@@ -8,7 +8,7 @@ from airflow.operators.bash import BashOperator
 
 # [START instantiate_dag]
 with DAG(
-    'firstDAG',
+    '02_bash_example',
     # [START default_args]
     # These args will get passed on to each operator
     # You can override them on a per-task basis during operator initialization
@@ -35,7 +35,7 @@ with DAG(
     # [END default_args]
     description='A simple tutorial DAG',
     schedule_interval=timedelta(days=1),
-    start_date=datetime(2021, 1, 1),
+    start_date=datetime(2023, 10, 1),
     catchup=False,
     tags=['example'],
 ) as dag:
@@ -90,4 +90,4 @@ with DAG(
     )
     # [END jinja_template]
 
-    t1 >> [t2, t3]
+    t1 >> t2 >> t3
