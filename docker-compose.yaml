@@ -63,7 +63,7 @@ services:
       - /usr/bin/docker:/usr/bin/docker
       - /var/run/docker.sock:/var/run/docker.sock
   ftpd:
-    image: "mauler/simple-ftp-server"
+    image: euranova/simple-ftp-server
     container_name: mlserver-ftpd
     environment:
       - FTP_USER=test
