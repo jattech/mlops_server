@@ -25,7 +25,8 @@ with DAG(
     "04_ml_pipeline",
     description='End-to-end ML pipeline example',
     schedule_interval='@daily',
-    default_args=default_args, 
+    default_args=default_args,
+    template_searchpath = '/home/jovyan/work/dags/sql', 
     catchup=False
 ) as dag:
 
