@@ -1,7 +1,7 @@
 from airflow.models import DAG
 
 from airflow.operators.python import PythonOperator
-from airflow.providers.postgres.operators.postgres import PostgresOperator
+from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
 from airflow.utils.task_group import TaskGroup
 
 from datetime import datetime
@@ -34,16 +34,16 @@ with DAG(
     with TaskGroup('creating_storage_structures') as creating_storage_structures:
 
         # task: 1.1 -> Create table experiments in db relate to connection postgres_postgres_local_connection
-        creating_experiment_tracking_table = PostgresOperator(
+        creating_experiment_tracking_table = SQLExecuteQueryOperator(
             task_id="creating_experiment_tracking_table",
-            postgres_conn_id='postgres_local_connection',
+            conn_id='postgres_local_connection',
             sql='sql/create_experiments.sql'
         )
 
         # task: 1.2 -> Create batch data table in db relate to connection postgres_postgres_local_connection
-        creating_batch_data_table = PostgresOperator(
+        creating_batch_data_table = SQLExecuteQueryOperator(
             task_id="creating_batch_data_table",
-            postgres_conn_id='postgres_local_connection',
+            conn_id='postgres_local_connection',
             sql='sql/create_batch_data_table.sql'
         )
 

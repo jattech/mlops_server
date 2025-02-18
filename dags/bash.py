@@ -90,4 +90,4 @@ with DAG(
     )
     # [END jinja_template]
 
-    t1 >> t2 >> t3
+    t1 >> t3 >> t2
