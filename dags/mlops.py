@@ -22,7 +22,6 @@ dag = DAG(
 )
 
 
-
 # Tarea 1: Descargar los datos
 t1 = BashOperator(
     task_id='download_data',

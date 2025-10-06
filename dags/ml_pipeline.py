@@ -18,7 +18,7 @@ default_args= {
     'owner': 'Data Scientist',
     'email_on_failure': False,
     'email': ['ds@mymail.com'],
-    'start_date': datetime(2023, 10, 1)
+    'start_date': datetime(2025, 10, 2)
 }
 
 with DAG(
